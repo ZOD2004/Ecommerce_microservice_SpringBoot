@@ -1,0 +1,12 @@
+
+User registers → logs in.
+
+Browses products from Product Service.
+
+Adds items to cart via Cart Service.
+
+Applies a discount using Coupon Service.
+
+Proceeds to place an order via Order Service.
+
+(Optional) Payment Service simulates payment and sends confirmation.
