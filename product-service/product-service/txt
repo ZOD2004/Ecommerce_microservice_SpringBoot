@@ -1,0 +1,119 @@
+🛍 ProductService → Add These Methods
+1. 🔍 Search Products by Name / Keyword
+java
+Copy
+Edit
+public List<Product> searchByName(String keyword);
+Use case: /api/product/search?name=phone
+
+2. 🔎 Get Products by Category
+java
+Copy
+Edit
+public List<Product> findByCategoryId(Integer categoryId);
+Use case: /api/product/category/3
+
+Helps customers browse all products in a specific category.
+
+3. ⬆️ Sort Products by Price or Date
+java
+Copy
+Edit
+public List<Product> sortByPrice(boolean ascending);
+Use case: /api/product/sort?by=price&asc=true
+
+You can also sort by:
+
+expDate (new arrivals, expiring soon)
+
+name (alphabetically)
+
+🗃 CategoryService → Optional but Useful Methods
+4. 📦 Get Category by Name
+java
+Copy
+Edit
+public Category findByName(String name);
+This supports unique category URLs like /api/category/findByName?name=Electronics
+
+🛠 Fix This in Your Existing Code
+❌ Your update in ProductService doesn’t save changes
+java
+Copy
+Edit
+public Product update(Long id, Product product) {
+    Product pro = findById(id);
+    pro.setName(product.getName());
+    pro.setPrice(product.getPrice());
+    pro.setCategory(product.getCategory());
+    pro.setExpDate(product.getExpDate());
+    return pro; // ❌ this only updates local object, not DB
+}
+✅ Fix:
+
+java
+Copy
+Edit
+return productRepository.save(pro);
+💥 Add Validation in Service
+Validate that price is not negative
+
+Validate expDate is not in the past
+
+Throw IllegalArgumentException or custom exceptions if validation fails
+
+💡 Optional Business Logic Methods
+Method	Description
+List<Product> findExpiredProducts()	For admin to clean up expired stock
+List<Product> findLowStockProducts()	If stock is managed
+List<Product> findTopSellingProducts()	Requires order data, future improvement
+List<Product> findRecentProducts()	Sorted by added date
+
+🧩 Controller Endpoint Ideas Based on These Services
+Here’s how you can map those new methods to endpoints:
+
+Endpoint	Description
+GET /api/product/search?name=Phone	Search
+GET /api/product/category/{id}	Get by category
+GET /api/product/sort?by=price&asc=true	Sorting
+GET /api/category/findByName?name=Clothing	Category by name
+
+🔐 Security (Future Addition)
+Add authentication using Spring Security + JWT
+
+Restrict certain endpoints (e.g., delete/update) to ADMIN only
+
+✅ In Short – You Should Add:
+📌 ProductService
+ searchByName
+
+ findByCategoryId
+
+ sortByPrice / sortByDate
+
+ Fix update() method
+
+ Optional: findExpiredProducts, findRecentProducts
+
+📌 CategoryService
+ findByName
+
+If you want, I can:
+
+Generate these method implementations for you
+
+Suggest improved controller methods and endpoints
+
+Help you split this into microservices (ProductService, CategoryService, OrderService, etc.)
+
+Would you like help implementing any of these next?
+
+
+
+
+
+
+
+
+
+Ask ChatGPT
