@@ -41,7 +41,7 @@ public class ProductController {
 
     @GetMapping("/find/{id}")
     public ResponseEntity<Product> findById(@PathVariable("id") Long id){
-        System.out.println("Controller called");
+//        System.out.println("Controller called");
         return new ResponseEntity<>(productService.findById(id),HttpStatus.OK);
     }
 

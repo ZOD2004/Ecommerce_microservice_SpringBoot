@@ -41,11 +41,11 @@ public class ProductService {
     public Product findById(Long id) {
         Optional<Product> obj = productRepository.findById(id);
         if(obj.isPresent()){
-            System.out.println("Product found in service layer");
+//            System.out.println("Product found in service layer");
 //            System.out.println(obj.get());
             return obj.get();
         }else{
-            System.out.println("Exception adikuran");
+//            System.out.println("Exception adikuran");
             throw new ProductNotFoundException("Product with id "+id+" not there");
         }
     }
