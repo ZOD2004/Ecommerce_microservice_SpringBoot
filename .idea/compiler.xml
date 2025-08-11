@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cart-service" />
+        <module name="inventory-service" />
+        <module name="orderService" />
+        <module name="ecommerce-gateway" />
+        <module name="user-service" />
+        <module name="EmailService" />
+        <module name="EcommerceServer" />
+      </profile>
+      <profile name="Annotation profile for ecommerce" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="Coupon-Service" />
+        <module name="product-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Coupon-Service" options="-parameters" />
+      <module name="EcommerceServer" options="" />
+      <module name="EmailService" options="" />
+      <module name="cart-service" options="" />
+      <module name="ecommerce-gateway" options="" />
+      <module name="product-service" options="-parameters" />
+      <module name="user-service" options="" />
+    </option>
+  </component>
+</project>

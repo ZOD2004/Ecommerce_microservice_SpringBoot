@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name  = "EMAIL-SERVICE")
+@FeignClient(name = "EMAIL-SERVICE")
 public interface EmailFeign {
 
     @PostMapping("api/email/sendOrderConfirmation")
     public ResponseEntity<String> sendOrderEmail(
             @RequestBody Order order,
-            @RequestParam String toEmail);
+            @RequestParam("toEmail") String toEmail); // Added "toEmail" parameter name
 
 }
